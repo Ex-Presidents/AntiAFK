@@ -38,7 +38,7 @@ namespace AntiAFK
 
             foreach(SteamPlayer player in PlayerInfo.Keys)
             {
-                if (player.player.movement.isMoving || Provider.pending.Contains(Provider.pending.Find(c => c.playerID == player.playerID)))
+                if (player.player.movement.isMoving || player.player.stance.stance == EPlayerStance.DRIVING || Provider.pending.Contains(Provider.pending.Find(c => c.playerID == player.playerID)))
                     mod.Add(player);
 
                 if((DateTime.Now - PlayerInfo[player]).TotalSeconds >= Configuration.Instance.SecondsUntilKick)
